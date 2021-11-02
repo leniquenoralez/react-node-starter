@@ -46,6 +46,7 @@ To run cypress:
 npm cypress:open
 ```
 
-## Credits
+## Todo
 
-Made with [createapp.dev](https://createapp.dev/)
+- [ ] Add client side logging
+- [ ] add IO ts supports
