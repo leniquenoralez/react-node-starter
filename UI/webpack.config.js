@@ -60,17 +60,21 @@ const config = {
     ],
   },
   devServer: {
-    port: 9000,
+    port: 3000,
     static: {
       directory: './dist',
     },
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9000',
-        router: () => 'http://localhost:3000',
+    proxy: [
+      {
+        context: ['/auth', '/api'],
+        target: 'http://localhost:3000',
+        router: {
+          'localhost:3000/api': 'http://localhost:9000/api',
+          'localhost:3000/auth': 'http://localhost:9000/auth',
+        },
         logLevel: 'debug' /*optional*/,
       },
-    },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
