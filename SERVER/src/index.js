@@ -1,21 +1,23 @@
+import config from './config';
 import express from 'express';
 import connect from './db';
-import config from './config';
-const app = express();
+import cors from 'cors';
+import mongoose from 'mongoose';
 
+const { PORT } = process.env;
+
+const app = express();
+app.use(cors());
 app.get('/api', (req, res) => {
   res.json('Response From Server!!');
 });
 
 const start = async () => {
   try {
-    const client = await connect();
+    await connect();
 
-    if (client) {
-      console.log('DB CONNECTED');
-    }
-    app.listen(3000, () => {
-      console.log(`REST API on http://localhost:${config.port}/api`);
+    app.listen(PORT, () => {
+      console.log(`REST API on http://localhost:${PORT}/api 🚀`);
     });
   } catch (error) {
     console.error(error);

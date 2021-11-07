@@ -60,17 +60,19 @@ const config = {
     ],
   },
   devServer: {
-    port: 9000,
+    host: '0.0.0.0',
+    port: 3000,
     static: {
       directory: './dist',
     },
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9000',
-        router: () => 'http://localhost:3000',
-        logLevel: 'debug' /*optional*/,
+    proxy: [
+      {
+        context: ['/api', '/auth'],
+        target: 'http://backend:9000',
+        secure: false,
+        changeOrigin: true,
       },
-    },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

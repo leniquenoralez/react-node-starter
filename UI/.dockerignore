@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+cypress
+__test__
+.prettierrc
+.prettierignore
+.eslintrc
+tsconfig.json
+.gitignore
+README.md
