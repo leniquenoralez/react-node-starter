@@ -1,0 +1,12 @@
+{
+  "test": {
+    "PORT": 9000,
+    "MONGODB_URI": "mongodb://database:27017",
+    "DB_NAME": "app-test"
+  },
+  "development": {
+    "PORT": 9000,
+    "MONGODB_URI": "mongodb://database:27017",
+    "DB_NAME": "app"
+  }
+}
